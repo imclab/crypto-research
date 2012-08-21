@@ -36,9 +36,10 @@ def run():
         stream=open(options.file,'r')
     else:
         stream=sys.stdin
-    cipher_bytes=slurp(stream).encode()
+    input_bytes=slurp(stream).encode()
+    init_state=init(input_bytes)
     print(options.key)
-    print(cipher_bytes)
+    print(init_state)
 
 if __name__=='__main__':
     run()
