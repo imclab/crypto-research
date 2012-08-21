@@ -8,6 +8,20 @@ def slurp(stream):
 def reverse(key):
     return key
 
+# Initialize state machine
+def init(key):
+    lfsr1=reverse(key[0] << 9) \
+        | 0x100 \
+        | reverse(key[1])
+    lfsr2=(reverse(key[2] & 0x07) << 17) \
+        | 0x00200000 \
+        | (reverse(key[2] & 0xf8) << 16) \
+        | (reverse(key[3]) << 8) \
+        | reverse(key[4])
+    cc=0
+
+    return [lfsr1, lfsr2, cc]
+
 def run():
     parser=argparse.ArgumentParser(description='''
       Content Scrambling System
