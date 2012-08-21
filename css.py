@@ -12,6 +12,7 @@ def run():
     '''.strip())
     parser.add_argument('action',choices=['enc','dec'],
                         help='encrypt or decrypt')
+    parser.add_argument('key',help='the key')
     parser.add_argument('-f','--file',dest='file',
                         help='file to act on')
     options=parser.parse_args()
@@ -20,6 +21,7 @@ def run():
     else:
         stream=sys.stdin
     cipher_bytes=slurp(stream).encode()
+    print(options.key)
     print(cipher_bytes)
 
 if __name__=='__main__':
