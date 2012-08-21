@@ -4,7 +4,9 @@ import argparse, base64, sys
 def slurp(stream):
     return stream.read()
 
-
+# TODO: Implement
+def reverse(key):
+    return key
 
 def run():
     parser=argparse.ArgumentParser(description='''
