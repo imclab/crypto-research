@@ -4,7 +4,12 @@ import argparse, base64, sys
 def slurp(stream):
     return stream.read()
 
-
+def reverse(byt):
+    res=0
+    for x in range(8):
+        if byt & (1<<(7-x)) > 0:
+            res |= 1<<x
+    return res
 
 def run():
     parser=argparse.ArgumentParser(description='''
