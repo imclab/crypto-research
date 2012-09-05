@@ -1,0 +1,109 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>The Content Scrambling System (CSS)</title>
+</head>
+<body background="css_files/1506554.jpg" link="#009900" text="#000000" vlink="#990000" alink="#000000">
+<p>
+</p><center>
+<table bgcolor="#e6cf8e" border="2" cellpadding="0" cellspacing="2" width="90%">
+  <tbody>
+  <tr>
+    <td height="44" width="100%">
+      <p>
+      </p><center>&nbsp;</center>
+      <p></p>
+      <h1>
+      <center><font color="#990000">The Content Scrambling System (CSS)</font></center></h1>
+      <h3>
+      <center><i><font color="#990000">A Technical Description</font></i></center></h3>
+      <h4>
+      <center><i><font color="#000000">
+      <hr>
+      </font></i></center></h4>
+      <blockquote>
+        <p>
+		<b>Introduction</b>
+		</p>
+		<blockquote>
+		<p>
+		The Content Scrambling System (CSS) is used on DVDs to encrypt the data so that only licensed DVD players
+		can decode it.  It is also used in variant forms to implement a challenge-response protocol between DVD
+		player software on a PC and a DVD drive (ATAPI or SCSI) attached to that PC, and to decrypt the <i>title key</i>
+		(the CSS key for a file) from the <i>disk key</i> and <i>player key</i>.  In all there are four variant forms of CSS.
+		</p><p>
+		CSS is a very simple encryption scheme based on shifts, XORs and table lookups.  Its keylength is 40 bits, although it
+		has been shown elsewhere that a brute force attack is only O(2^25) and a plaintext attack is only O(2^18) - i.e. CSS is
+		weak for its keylength.
+		</p><p>
+		This document describes the CSS algorithm in enough technical detail to implement it.  I also describe the plaintext
+		attack, which is for academic benefit only since all the valid player keys are already known.  Finally I describe the
+		disk authentication procedure, which is quite involved and difficult to extract from the Mount Fuji document.
+		</p><p>
+		For reference, a CSS implementation is provided in <a href="http://www.tinyted.net/eddie/css_code.zip">source code form</a>; this is not in a format
+		that can be readily converted to a program as this might potentially violate the Digital Millenium Copyright Act; however
+		it should serve as useful reference material for those wishing to implement CSS on their own.
+		</p></blockquote>
+        <p><b><a href="http://www.tinyted.net/eddie/css_basic.html">The Basic Algorithm</a></b></p>
+        <blockquote>
+          <p><b>The CSS State Machine<br>
+		  Initializing the State Machine<br>
+		  Stepping the State Machine<br>
+		  Decrypting the Data<br>
+		  The CSS Table</b>
+		  </p>
+		</blockquote>
+        <p><b><a href="http://www.tinyted.net/eddie/css_modes.html">CSS Modes</a></b></p>
+        <blockquote>
+          <p><b>Decrypting stream data (Mode 1)<br>
+		  Calculating the Response to a Challenge (Mode 3)<br>
+		  <font color="#808080">Calculating the Title Key (Modes 0 and 2)</font></b>
+		  </p>
+		</blockquote>
+        <p><b><a href="http://www.tinyted.net/eddie/css_plaintext.html">The Plaintext Attack</a></b></p>
+        <blockquote>
+          <p><b>Overview<br>
+		  Obtaining the CSS State<br>
+		  Backtracking the CSS State</b>
+		  </p>
+		</blockquote>
+        <p><b><a href="http://www.tinyted.net/eddie/css_auth.html">Disk Authentication</a></b></p>
+        <blockquote>
+          <p><b>Overview<br>
+			Obtaining an AGID from the drive<br>
+			Challenging the drive and getting its response<br>
+			Calculating the variant the drive has chosen<br>
+			Obtaining the challenge from the drive and calculating the response<br>
+			Sending the response to the drive<br>
+			Reading the disk key from the disk</b>
+		  </p>
+		</blockquote>
+	  </blockquote>
+      <p>
+      </p><hr>
+
+      <p></p>
+      <p>
+      </p><center><a href="http://www.tinyted.net/eddie/">[Home]</a> <a href="http://www.tinyted.net/">[TinyTed]</a></center>
+      <p></p>
+</td></tr></tbody></table></center><p></p>
+<p>&nbsp;</p>
+<h1>&nbsp;</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
