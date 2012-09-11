@@ -44,7 +44,6 @@ def gen_lfsrbyte(lfsr1,lfsr2,cc,mode):
         lfsr2=_lfsr2(lfsr2)
         h1=0xff if (mode & 1) else 0x00
         h2=0xff if (mode & 2) else 0x00
-        print(lfsr1,lfsr2,h1,h2)
         s=((lfsr1 >> 9) ^ h1) + ((lfsr2 >> 17) ^ h2) + cc
         cc=s>>8
         yield s & 0xff
@@ -63,10 +62,10 @@ def run():
     options=parser.parse_args()
     mode=int(options.mode)
     if options.file:
-        stream=open(options.file,'r')
+        stream=open(options.file,'rb')
     else:
-        stream=sys.stdin
-    input_bytes=slurp(stream).encode()
+        stream=sys.stdin.buffer
+    input_bytes=slurp(stream)
     key=None
     if len(options.key) == 10:
         tmp=options.key
@@ -85,7 +84,7 @@ def run():
             with open(options.output,'wb') as f:
                 f.write(res)
         else:
-            print(bytes(res))
+            sys.stdout.buffer.write(res)
     else:
         print('no key')
     
