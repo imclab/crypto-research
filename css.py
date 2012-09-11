@@ -52,8 +52,6 @@ def run():
     parser=argparse.ArgumentParser(description='''
       Content Scrambling System
     '''.strip())
-    parser.add_argument('action',choices=['enc','dec'],
-                        help='encrypt or decrypt')
     parser.add_argument('key',help='the key')
     parser.add_argument('-m','--mode',dest='mode')
     parser.add_argument('-o','--out',dest='output')
